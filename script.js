@@ -274,40 +274,40 @@
 
 // _____________________________________________________________________________________________
 
-// const Mark = {
-//     firstName: "Mark",
-//     lastName: "Market",
-//     mass: 120,
-//     height: 1.5,
-//     bmi : 0,
+const Mark = {
+    firstName: "Mark",
+    lastName: "Market",
+    mass: 120,
+    height: 1.5,
+    bmi : 0,
 
-//     calcBMI: function() {
-//         this.bmi = this.mass/(this.height**2);
-//         return this.bmi;
-//     }
-// }
+    calcBMI: function() {
+        this.bmi = this.mass/(this.height**2);
+        return this.bmi;
+    }
+}
 
-// const John = {
-//     firstName: "John",
-//     lastName: "Jockey",
-//     mass: 80,
-//     height: 1.8,
-//     bmi : 0,
+const John = {
+    firstName: "John",
+    lastName: "Jockey",
+    mass: 80,
+    height: 1.8,
+    bmi : 0,
 
-//     calcBMI: function() {
-//         this.bmi = this.mass/(this.height**2);
-//         return this.bmi;
-//     }
-// }
+    calcBMI: function() {
+        this.bmi = this.mass/(this.height**2);
+        return this.bmi;
+    }
+}
 
-// Mark.calcBMI();
-// John.calcBMI();
+Mark.calcBMI();
+John.calcBMI();
 
-// const highBMI = Mark.bmi > John.bmi ? Mark : John;
-// const lowBMI  = Mark.bmi > John.bmi ? John : Mark;
+const highBMI = Mark.bmi > John.bmi ? Mark : John;
+const lowBMI  = Mark.bmi > John.bmi ? John : Mark;
 
-// console.log(`${highBMI.firstName} ${highBMI.lastName} has a higher BMI (${highBMI.bmi}) than 
-// ${lowBMI.firstName} ${lowBMI.lastName} (${lowBMI.bmi}). That sure is ${highBMI.bmi > 49? "sad" : "funny"}.`)
+console.log(`${highBMI.firstName} ${highBMI.lastName} has a higher BMI (${highBMI.bmi}) than 
+${lowBMI.firstName} ${lowBMI.lastName} (${lowBMI.bmi}). That sure is ${highBMI.bmi > 49? "sad" : "funny"}.`)
 
 //___________________________________________________________________________________________________
 
