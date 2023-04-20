@@ -274,40 +274,81 @@
 
 // _____________________________________________________________________________________________
 
-const Mark = {
-    firstName: "Mark",
-    lastName: "Market",
-    mass: 120,
-    height: 1.5,
-    bmi : 0,
+// const Mark = {
+//     firstName: "Mark",
+//     lastName: "Market",
+//     mass: 120,
+//     height: 1.5,
+//     bmi : 0,
 
-    calcBMI: function() {
-        this.bmi = this.mass/(this.height**2);
-        return this.bmi;
-    }
-}
+//     calcBMI: function() {
+//         this.bmi = this.mass/(this.height**2);
+//         return this.bmi;
+//     }
+// }
 
-const John = {
-    firstName: "John",
-    lastName: "Jockey",
-    mass: 80,
-    height: 1.8,
-    bmi : 0,
+// const John = {
+//     firstName: "John",
+//     lastName: "Jockey",
+//     mass: 80,
+//     height: 1.8,
+//     bmi : 0,
 
-    calcBMI: function() {
-        this.bmi = this.mass/(this.height**2);
-        return this.bmi;
-    }
-}
+//     calcBMI: function() {
+//         this.bmi = this.mass/(this.height**2);
+//         return this.bmi;
+//     }
+// }
 
-Mark.calcBMI();
-John.calcBMI();
+// Mark.calcBMI();
+// John.calcBMI();
 
-const highBMI = Mark.bmi > John.bmi ? Mark : John;
-const lowBMI  = Mark.bmi > John.bmi ? John : Mark;
+// const highBMI = Mark.bmi > John.bmi ? Mark : John;
+// const lowBMI  = Mark.bmi > John.bmi ? John : Mark;
 
-console.log(`${highBMI.firstName} ${highBMI.lastName} has a higher BMI (${highBMI.bmi}) than 
-${lowBMI.firstName} ${lowBMI.lastName} (${lowBMI.bmi}). That sure is ${highBMI.bmi > 49? "sad" : "funny"}.`)
+// console.log(`${highBMI.firstName} ${highBMI.lastName} has a higher BMI (${highBMI.bmi}) than 
+// ${lowBMI.firstName} ${lowBMI.lastName} (${lowBMI.bmi}). That sure is ${highBMI.bmi > 49? "sad" : "funny"}.`)
 
 //___________________________________________________________________________________________________
 
+// // for loop is same as always
+// for(let i = 1; i < 5; i ++){
+//     console.log(`This is count number ${i}`);
+// }
+//____________________________________
+
+// const jonasArray = [
+//     `Jonas`,
+//     `Schmedtmann`,
+//     2037-1991,
+//     `teacher`,
+//     [`Michael`,`Peter`,`Steven`]
+// ];
+
+// const types = [];
+// for(let i = 0; i<jonasArray.length; i++)
+// {
+//     console.log(jonasArray[i], typeof(jonasArray[i]));
+
+//     if(typeof(jonasArray[i]) !== `string`) continue;
+//     types.push(typeof(jonasArray[i]));
+// }
+
+// console.log(types)
+//_______________________________________
+// let dice = 0;
+// let rolls = 0;
+// let amountOfSixes = 0;
+// while(amountOfSixes < 100){
+//     rolls++;
+//     dice = Math.trunc(Math.random()*6)+1;
+//     console.log(`You have rolled a ${dice}. ${dice === 6 ? `COUNT UP` : ``}`)
+//     if(dice === 6){
+//         amountOfSixes++;
+//     }
+// }
+
+// console.log(`the chance for a six by these rolls was ${100/rolls}
+// Expected value was ${1/6}. 
+// The chance for a six was ${Math.abs(100*(1-((100/rolls)/(1/6))))} percent ${100/rolls > 1/6 ? `greater` : `less`} than expected!`)
+//_________________________________________
