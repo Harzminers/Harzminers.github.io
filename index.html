@@ -4,33 +4,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Darian Gerlach</title>
+    <title>Guess My Number</title>
   </head>
-  <body style="background-color: sandybrown">
+  <body style="background-color: whitesmoke">
     <header>
       <h1>Guess My Number</h1>
-      <p>What number between 0 and 100 am i thinking of?</p>
+      <p class="page-subtitle">
+        What number between 0 and 100 am i thinking of?
+      </p>
+      <button class="restart-btn" type="button">Next Attempt</button>
     </header>
+    <p class="mysteryNumber">?</p>
     <main>
       <section class="sectionLeft">
-        <form class="form">
+        <section class="form">
           <input
             type="number"
-            max="20"
-            min="0"
             name="numberInputField"
             id="numberGuessingField"
             class="numberInput"
           />
-          <button>check</button>
+          <button class="checkBtn" type="button">check</button>
           <div class="numResponseUI">Start guessing...</div>
-        </form>
+        </section>
       </section>
       <section class="sectionRight">
-        <div class="scoreElement">Your Score: 20</div>
-        <div class="scoreElement">Highscore: 0</div>
+        <div class="current-score score_UI">Your Score: 20</div>
+        <div class="high-score score_UI">Highscore: 0</div>
       </section>
     </main>
+    <div class="guessing-log">- This is the beginning of the log</div>
   </body>
   <script src="app.js"></script>
 </html>
