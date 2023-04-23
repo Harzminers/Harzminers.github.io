@@ -85,6 +85,11 @@
 
 // printForecast(temperatureForcast);
 //________________________________________________________________________
+const mysteryNumberElement = document.querySelector(`.mysteryNumber`);
+const numberInputField = document.querySelector(`.numberInput`);
+const documentBody = document.querySelector(`body`);
+const checkBtn = document.querySelector(`.checkBtn`);
+
 const maxGuessingNumber = 100;
 const minGuessingNumber = 0;
 
@@ -121,47 +126,59 @@ function SetNewMysteryNumber() {
     ) + 1;
   return mysteryNumber;
 }
-// set initial values
-function InitNewGame() {
-  AppendToLog(`A new round has been started!`);
-  gameHasEnded = false;
-  SetNewMysteryNumber();
-  currentScore = maxGuessingNumber;
-  document.querySelector(`.mysteryNumber`).textContent = "?";
+function ChangeScore(value) {
+  currentScore += value;
   document.querySelector(
     `.current-score`
-  ).textContent = `Current Score: ${maxGuessingNumber}`;
+  ).textContent = `Current Score: ${currentScore}`;
+}
+function SetScore(value) {
+  currentScore = value;
+  document.querySelector(
+    `.current-score`
+  ).textContent = `Current Score: ${currentScore}`;
+}
+function SetHighScore(score) {
+  highScore = score;
   document.querySelector(`.high-score`).textContent = `Highscore: ${highScore}`;
+}
+function DisplayGuessResponse(message) {
+  document.querySelector(`.numResponseUI`).textContent = message;
+}
+// set initial values
+function InitNewGame() {
+  gameHasEnded = false;
+  AppendToLog(`A new round has been started!`);
+  SetNewMysteryNumber();
+  SetScore(maxGuessingNumber);
+  mysteryNumberElement.textContent = "?";
+  SetHighScore(highScore);
   document.querySelector(
     `.page-subtitle`
   ).textContent = `What number between ${minGuessingNumber} and ${maxGuessingNumber} am I thinking of?`;
-  document.querySelector(`.numberInput`).value = ``;
-  document.querySelector(`.numResponseUI`).textContent = "Start guessing...";
-  document.querySelector(`body`).style.backgroundColor = `whiteSmoke`;
+  numberInputField.value = ``;
+  DisplayGuessResponse("Start guessing...");
+  documentBody.style.backgroundColor = `whiteSmoke`;
 }
 
-document.querySelector(`.checkBtn`).addEventListener(`click`, function () {
-  console.log(document.querySelector(`.numberInput`).value);
-  guessValue = Number(document.querySelector(`.numberInput`).value);
+checkBtn.addEventListener(`click`, function () {
+  guessValue = Number(numberInputField.value);
 
   if (gameHasEnded) return;
   if (currentScore <= 1) {
-    document.querySelector(`.numResponseUI`).textContent = `You lost the Game.`;
+    DisplayGuessResponse(`You lost the Game.`);
     gameHasEnded = true;
-    currentScore--;
-    document.querySelector(
-      `.current-score`
-    ).textContent = `Current Score: ${currentScore}`;
+    ChangeScore(-1);
     AppendToLog(`You have lost the Game!`);
     return;
   }
   if (
-    (!guessValue && guessValue !== 0) ||
+    (!guessValue && guessValue !== 0 && minGuessingNumber <= 0) ||
     typeof guessValue !== "number" ||
     guessValue > maxGuessingNumber ||
     guessValue < minGuessingNumber
   ) {
-    document.querySelector(`.numResponseUI`).textContent = "Invalid Input!";
+    DisplayGuessResponse("Invalid Input!");
     AppendToLog(`Entered an invalid Input (${guessValue})!`);
     return;
   }
@@ -173,33 +190,27 @@ document.querySelector(`.checkBtn`).addEventListener(`click`, function () {
       ? "Too low!"
       : "Correct Number!";
 
-  document.querySelector(`.numResponseUI`).textContent = responseMessage;
+  DisplayGuessResponse(responseMessage);
 
   if (guessValue === mysteryNumber) {
     if (currentScore > highScore) {
-      highScore = currentScore;
-      document.querySelector(
-        `.high-score`
-      ).textContent = `Highscore: ${highScore}`;
+      SetHighScore(currentScore);
     }
-    document.querySelector(`.mysteryNumber`).textContent = mysteryNumber;
-    document.querySelector(`body`).style.backgroundColor = `#60b347`;
+    mysteryNumberElement.textContent = mysteryNumber;
+    documentBody.style.backgroundColor = `#60b347`;
     highScore = currentScore;
     gameHasEnded = true;
     AppendToLog(`Guessed ${guessValue}. This is the correct Number!`);
     AppendToLog(`Round has ended. Start a new round to play again.`);
   } else {
-    currentScore--;
-    document.querySelector(
-      `.current-score`
-    ).textContent = `Current Score: ${currentScore}`;
+    ChangeScore(-1);
     AppendToLog(`Guessed ${guessValue}. This is ${responseMessage}.`);
   }
 });
 
-document.querySelector(`.numberInput`).addEventListener(`change`, function () {
-  value = Number(document.querySelector(`.numberInput`).value);
-  document.querySelector(`.numberInput`).value =
+numberInputField.addEventListener(`change`, function () {
+  value = Number(numberInputField.value);
+  numberInputField.value =
     value > maxGuessingNumber
       ? maxGuessingNumber
       : value < minGuessingNumber
