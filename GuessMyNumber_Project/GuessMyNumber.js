@@ -176,9 +176,12 @@ document.querySelector(`.checkBtn`).addEventListener(`click`, function () {
   document.querySelector(`.numResponseUI`).textContent = responseMessage;
 
   if (guessValue === mysteryNumber) {
-    document.querySelector(
-      `.high-score`
-    ).textContent = `Highscore: ${currentScore}`;
+    if (currentScore > highScore) {
+      highScore = currentScore;
+      document.querySelector(
+        `.high-score`
+      ).textContent = `Highscore: ${highScore}`;
+    }
     document.querySelector(`.mysteryNumber`).textContent = mysteryNumber;
     document.querySelector(`body`).style.backgroundColor = `#60b347`;
     highScore = currentScore;
